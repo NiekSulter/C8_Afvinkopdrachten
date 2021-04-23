@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Landing page {% endblock %}
+
+{% block body %}
+
+<div>
+    <h2>Afvinkopdrachten van dit blok:</h2>
+        <ul>
+            <li><a href="{{ url_for('afvink1') }}">Afvinkopdracht 1</a></li>
+            <li>Afvinkopdracht 2</li>
+        </ul>
+</div>
+
+{% endblock %}

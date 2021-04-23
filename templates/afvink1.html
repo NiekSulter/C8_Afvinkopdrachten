@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Afvinkopdracht 1
+{% endblock %}
+
+{% block body %}
+    <h2>Afvinkopdracht1</h2>
+
+    <p>Voer een zoekterm in waarmee je de homo_sapiens_core_95_38 tabel wilt doorzoeken:</p>
+    <form method="post">
+        <input type="text" name="zoekterm" placeholder="zoekterm" >
+        <input type="submit" name="submit">
+    </form>
+<br>
+    {% if res %}
+        <div class="results">
+            <table class="tableAf1">
+                <tr>
+                    <th>GeneID</th>
+                    <th>Start position</th>
+                    <th>Stop position</th>
+                    <th>Strand</th>
+                    <th>Description</th>
+                </tr>
+                {% for result in res %}
+                    <tr>
+                        <td>{{ result.geneID }}</td>
+                        <td>{{ result.seqStartPos }}</td>
+                        <td>{{ result.seqStopPos }}</td>
+                        <td>{{ result.strand }}</td>
+                        <td>{{ result.description | reg_replace(zoekt) | safe}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+    {% endif %}
+    </div>
+
+
+{% endblock %}
